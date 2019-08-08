@@ -24,5 +24,6 @@ class AppServiceProvider extends ServiceProvider
     public function boot()
     {
         //
+        view()->share('siteName', "哼哼哈嘿");
     }
 }
