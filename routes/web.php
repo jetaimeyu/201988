@@ -14,6 +14,13 @@
 Route::get('/', function () {
     return view('welcome');
 });
+
+Route::get('form', 'RequestController@formPage');
+Route::post('/form/file_upload', 'RequestController@fileUpload');
+
+Route::get('home', function(){
+    return view('home');
+});
 Route::resource('post', 'PostController');
 Route::middleware('throttle:10,1')->group(function(){
     Route::get('/limit', function(){
