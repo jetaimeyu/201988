@@ -2,8 +2,10 @@
 
 namespace App\Console;
 
+use App\Console\Commands\WelcomeMessage;
 use Illuminate\Console\Scheduling\Schedule;
 use Illuminate\Foundation\Console\Kernel as ConsoleKernel;
+use Illuminate\Support\Facades\App;
 
 class Kernel extends ConsoleKernel
 {
@@ -14,6 +16,7 @@ class Kernel extends ConsoleKernel
      */
     protected $commands = [
         //
+        WelcomeMessage::class
     ];
 
     /**

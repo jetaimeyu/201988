@@ -84,7 +84,7 @@
         <div class="title m-b-md">
           {{$posts}}
         </div>
-        <a href="{{ url('/home') }}">Home</a>
+        <a href="{{ route('home') }}">Home</a>
 
         <div class="links">
             <a href="/">12</a><a href="\">1222</a><a href="">222</a><a href="post">22</a><a href="">222</a>

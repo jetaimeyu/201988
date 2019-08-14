@@ -1918,6 +1918,12 @@ __webpack_require__.r(__webpack_exports__);
         $('#picture-path').val(response.data.path);
         $('#picture-preview').html('<img src="' + response.data.path + '">');
       })["catch"](function (error) {
+        if (error.response.status == 422) {
+          $.each(error.response.data.errors, function (field, errors) {
+            $('#picture-preview').append('<div class="alert alert-danger ">' + errors[0] + '</div>');
+          });
+        }
+
         console.log(error);
       });
     }
@@ -37989,7 +37995,7 @@ var render = function() {
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
   return _c("div", { staticClass: "form-group" }, [
-    _c("label", { attrs: { for: "picture" } }, [_vm._v("上传一张图片")]),
+    _c("label", { attrs: { for: "picture" } }, [_vm._v("上传一张2图片")]),
     _vm._v(" "),
     _c("input", {
       ref: "picture",

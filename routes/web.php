@@ -16,11 +16,12 @@ Route::get('/', function () {
 });
 
 Route::get('form', 'RequestController@formPage');
+Route::post('form', 'RequestController@form')->name('form.submit');
 Route::post('/form/file_upload', 'RequestController@fileUpload');
 
 Route::get('home', function(){
     return view('home');
-});
+})->name('home');
 Route::resource('post', 'PostController');
 Route::middleware('throttle:10,1')->group(function(){
     Route::get('/limit', function(){
