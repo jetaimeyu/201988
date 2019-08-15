@@ -14,7 +14,7 @@
 Route::get('/', function () {
     return view('welcome');
 });
-
+Route::get('db', 'DbController@db');
 Route::get('form', 'RequestController@formPage');
 Route::post('form', 'RequestController@form')->name('form.submit');
 Route::post('/form/file_upload', 'RequestController@fileUpload');

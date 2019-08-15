@@ -2,10 +2,14 @@
 
 namespace App\Providers;
 
+use App\Listeners\UserEventSubscriber;
+use App\User;
+use function foo\func;
 use Illuminate\Support\Facades\Event;
 use Illuminate\Auth\Events\Registered;
 use Illuminate\Auth\Listeners\SendEmailVerificationNotification;
 use Illuminate\Foundation\Support\Providers\EventServiceProvider as ServiceProvider;
+use Illuminate\Support\Facades\Log;
 
 class EventServiceProvider extends ServiceProvider
 {
@@ -20,6 +24,10 @@ class EventServiceProvider extends ServiceProvider
         ],
     ];
 
+    protected $subscribe = [
+        UserEventSubscriber::class
+    ];
+
     /**
      * Register any events for your application.
      *
@@ -30,5 +38,9 @@ class EventServiceProvider extends ServiceProvider
         parent::boot();
 
         //
+
+        User::retrieved(function ($user){
+            Log::info('从模型中获取用户[' . $user->id . ']:' . $user->name);
+        });
     }
 }
