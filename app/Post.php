@@ -23,4 +23,10 @@ class Post extends Model
         return $query->where('status', Post::ACTIVED);
 
     }
+
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+
+    }
 }

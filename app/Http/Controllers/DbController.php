@@ -14,12 +14,16 @@ class DbController extends Controller
     //
     public function db()
     {
-        $user = User::find(1);
-        dump($user);
-        dump($user->profile->bio);
-        $profile = UserProfile::findOrFail(1);
-        dump($profile);
-        dump($profile->user->name);
+        $user = User::findOrFail(1);
+        dump($user->posts[0]->content);
+        $post = Post::findOrFail(4);
+        dump($post->user->name);
+//        $user = User::find(1);
+//        dump($user);
+//        dump($user->profile->bio);
+//        $profile = UserProfile::findOrFail(1);
+//        dump($profile);
+//        dump($profile->user->name);
     }
 
 }
