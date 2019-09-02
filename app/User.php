@@ -7,6 +7,7 @@ use App\Events\UserDeleting;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Database\Query\Builder;
 
 class User extends Authenticatable
 {
@@ -49,11 +50,21 @@ class User extends Authenticatable
      */
     protected $casts = [
         'email_verified_at' => 'datetime',
+        'setting' => 'array'
     ];
 
     protected $dispatchesEvents = [
         'deleting' => UserDeleting::class,
         'deleted' => UserDeleted::class
-
     ];
+
+    public function scopeOfType(Builder $query, $type)
+    {
+    }
+
+    public function profile()
+    {
+        return $this->hasOne(UserProfile::class, 'user_id', 'id');
+
+    }
 }
